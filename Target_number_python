@@ -1,0 +1,17 @@
+def solution(numbers, target):
+    leaves = [0]
+    answer = 0
+    for x in numbers:
+        temp =[]
+        for y in leaves:
+            temp.append(y+x)
+            temp.append(y-x)
+        leaves = temp
+    for i in leaves:
+        if i == target:
+            answer +=1
+    return answer
+
+    numbers = [1,1,1,1,1]
+    target = 3
+    print(solution(numbers, target))
