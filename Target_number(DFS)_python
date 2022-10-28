@@ -1,17 +1,16 @@
 def solution(numbers, target):
-    leaves = [0]
-    answer = 0
-    for x in numbers:
-        temp =[]
-        for y in leaves:
-            temp.append(y+x)
-            temp.append(y-x)
-        leaves = temp
-    for i in leaves:
-        if i == target:
-            answer +=1
-    return answer
+    return dfs(numbers, target, 0)
 
-    numbers = [1,1,1,1,1]
-    target = 3
-    print(solution(numbers, target))
+def dfs(numbers, target, depth):
+    answer = 0
+    if depth==len(numbers):
+        if sum(numbers)==target:
+            return 1
+        else:
+            return 0
+    else:
+        answer += dfs(numbers, target, depth+1)
+        numbers[depth]*=-1
+        answer += dfs(numbers, target, depth+1)
+    return answer
+            
