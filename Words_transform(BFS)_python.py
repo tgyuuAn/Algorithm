@@ -8,12 +8,19 @@ def check(query, word):
     return diff==1
 
 def solution(begin, target, words):
-    queue = deque([begin,0])
+    if target not in words:
+        return 0
+    
+    queue = deque([[begin,0]])
     while queue:
         x,cnt = queue.popleft()
         if x==target:
             return cnt
         
         for word in words:
-            if check(begin,word):
+            if x==word:
+                continue
+                
+            if check(x,word):
                 queue.append([word, cnt+1])
+    return 0
