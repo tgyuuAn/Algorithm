@@ -1,12 +1,9 @@
-from heapq import *
+import heapq
 
-heap =[]
-heappush(heap,10)
-heappush(heap,15)
-heappush(heap,30)
-heappush(heap,40)
-heappush(heap,50)
-heappush(heap,100)
-heappush(heap,40)
+a = [9,2,3]
+heap = []
+for i in a:
+    heapq.heappush(heap,(-i,i))
 
-print(heap)
+print(heapq.heappop(heap)[1])
+print(heap[0])
