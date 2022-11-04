@@ -7,3 +7,4 @@ for i in a:
 
 print(heapq.heappop(heap)[1])
 print(heap[0])
+print(a[0])
