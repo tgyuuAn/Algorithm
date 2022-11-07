@@ -66,7 +66,7 @@ def gui():
 
     label_7.grid(row=5,column=1)
 
-  #  label_8.grid(row=6,column=1)
+    label_8.grid(row=6,column=1)
     window.mainloop()
 
 def make_target():
