@@ -32,10 +32,10 @@ while True:
         elif answer == "2":
             break
         else:
-            raise Exception("정확한 값을 입력해주세요.")
+            raise Exception("\n정확한 값을 입력해주세요.")
     except:
         pass
     else:
-        print("이미지 저장을 완료하였습니다.")
+        print("\n\n이미지 저장을 완료하였습니다.")
     finally:
         print("\n\nbreak")
