@@ -5,4 +5,4 @@ def solution(chicken):
         answer += temp
         chicken = temp+mod
         
-    return answer5
+    return answer
