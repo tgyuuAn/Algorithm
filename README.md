@@ -1,3 +1,3 @@
 # Algorithm
 
-![image](https://github.com/tgyuuAn/Algorithm/assets/116813010/e37721be-aeb1-4df7-a054-b6df99ae2ae0)
+![image](https://github.com/tgyuuAn/Algorithm/assets/116813010/8d75fb72-48d8-46b5-8a00-1e5cd7b0c351)
