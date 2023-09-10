@@ -1,4 +1,4 @@
-def lcm(num1,num2):
+def gcd(num1,num2):
     num1, num2 = max(num1,num2), min(num1,num2)
     while num2!=0:
         mod = num1%num2
@@ -11,8 +11,8 @@ def solution(w,h):
     
     else:
         
-        lcm_wh = lcm(w,h)
-        w_rate, h_rate = w/lcm_wh, h/lcm_wh
+        gcd_wh = gcd(w,h)
+        w_rate, h_rate = w/gcd_wh, h/gcd_wh
         tot_block_count = h/h_rate
         trash = (w_rate+h_rate-1) * tot_block_count
         
