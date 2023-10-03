@@ -16,6 +16,8 @@ def solution(data, col, row_begin, row_end):
 
 
 ''' 
+문제 : https://school.programmers.co.kr/learn/courses/30/lessons/147354
+
 정렬할 때 여러개의 조건으로 key를 넣어주기 위해서 key = (조건1, 조건2) 로 넣어주면 된다.
 
 위 조건에서는 2번째 항을 기준으로 오름차순으로 정렬하고 만약 동일할 경우 첫 번째 값을 기준으로 내림차순 하기 때문에,
