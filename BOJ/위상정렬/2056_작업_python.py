@@ -1,4 +1,3 @@
-```python
 from collections import deque
 
 length_task = int(input())
@@ -36,4 +35,3 @@ while deq:
               deq.append(child)
 
 print(max(dp_table))
-```
