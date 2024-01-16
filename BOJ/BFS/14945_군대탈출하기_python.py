@@ -27,9 +27,6 @@ while deq:
         if dp_table[new_y][new_x][1] > max(dp_table[now_y][now_x][1],dp_table[new_y][new_x][0]):
             dp_table[new_y][new_x][1] = max(dp_table[now_y][now_x][1],dp_table[new_y][new_x][0])
 
-            if deq and deq[-1] == [new_x,new_y]:
-                continue
-
             deq.append([new_x,new_y])
 
         # 이미 특수장비를 사용한 경우    
@@ -60,8 +57,8 @@ while deq:
             
             deq.append([new_x,new_y])
     
-    for dp in dp_table:
-          print(dp)
-    print()
+    # for dp in dp_table:
+    #       print(dp)
+    # print()
 
 print(min(dp_table[-1][-1][1:]))
