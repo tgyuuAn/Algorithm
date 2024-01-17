@@ -7,7 +7,7 @@ use_list = list(map(int,input().split()))
 now_socket = []
 answer = 0
 for idx, use in enumerate(use_list):
-    print(now_socket, use)
+    # print(now_socket, use)
     if use in now_socket:
         continue
     
@@ -30,7 +30,6 @@ for idx, use in enumerate(use_list):
         next_idx, remove_idx = heappop(candidate)
 
         now_socket[remove_idx] = use
-        print(use,"+1")
         answer += 1
 
 print(answer)
