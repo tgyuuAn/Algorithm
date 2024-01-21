@@ -2,25 +2,23 @@ from collections import defaultdict, deque
 
 def solution(edges):
     answer = [0,0,0,0]
-    out_info = defaultdict(list)
-    in_info = defaultdict(list)
+    out_info = defaultdict(set)
+    in_info = defaultdict(set)
     nodes = set()
     
     for start, destination in edges:
-        out_info[start].append(destination)
-        in_info[destination].append(start)
+        out_info[start].add(destination)
+        in_info[destination].add(start)
         nodes.update((start, destination))
         
-    print("나가는 정보 : ",out_info)
-    print("들어오는 정보 : ",in_info)
+    # print("나가는 정보 : ",out_info)
+    # print("들어오는 정보 : ",in_info)
     
     start = 0
     start_dedications = []
-    for key in nodes:
-        if key not in in_info.keys():
-            start_dedications.append(key)
+    start_dedications.extend(nodes-set(in_info.keys()))
     
-    print("시작 지점 후보자:",start_dedications)
+    # print("시작 지점 후보자:",start_dedications)
     
     rod_graph_start_points = []
     if len(start_dedications) == 1:
@@ -34,9 +32,7 @@ def solution(edges):
             else:
                 start = dedication
     
-    print("시작 지점:",start)
     answer[0] = start
-    print("막대 모양 그래프 시작 지점:",rod_graph_start_points)
     answer[2] = len(rod_graph_start_points)
     
     # 먼저 막대 모양 그래프 시작 지점이 있을 경우, 막대 모양 그래프 부터 방문 처리 함.
@@ -45,35 +41,35 @@ def solution(edges):
         deq = deque([rod_graph_start_point])
         while deq:
             now = deq.popleft()
-            nodes.remove(now)
+            nodes.discard(now)
+            out_info[start].discard(now)
             deq.extend(out_info[now])
     
     for else_graph_start_point in out_info[start]:
-        
-        prev = else_graph_start_point
         deq = deque([else_graph_start_point])
-        temp = 0
+        max_temp = 0
         while deq:
             now = deq.popleft()
-            nodes.discard(now)
             
-            # 8자 모양 그래프의 중앙 지점을 만났을 경우 탈출
-            if len(out_info[now]) == 2:
-                answer[3] += 1
-                break
-                
-            # 정점과 다음 정점이 같을 경우 도넛 모양 그래프
-            if len(out_info[now]) == 1 and prev == out_info[now][0]:
-                answer[1] += 1
-                break
-                
-            if len(out_info[now]) == 0 and in_info[now] == 1:
+            if len(out_info[now]) == 0:
                 answer[2] += 1
                 break
             
-            prev = now
+            if max_temp != 0 and now == else_graph_start_point:
+                if max_temp == 2:
+                    answer[3] += 1
+
+                if max_temp == 1:
+                    answer[1] += 1
+                break
+
+            max_temp = max(max_temp, len(out_info[now]))
+
             for next_node in out_info[now]:
-                deq.append(next_node)
+                if next_node in nodes:
+                    deq.append(next_node)
+                    nodes.discard(next_node)
+                
 
     return answer
 
@@ -107,9 +103,3 @@ def solution(edges):
 # 그럼 1개씩 있는 경우를 어떻게 거르지?
 # 아하 도넛 모양, 막대모양, 8자 모양 그래프의 합은 2 이상이구나.
 # 그럼 1개가 있을 경우 무조건 막대 모양 그래프 시작 지점.
-
-
-# 막대 모양 그래프는 이전 간선을 저장 했다가 다음 간선이 이전 간선과 같은 경우가 생겼을 경우 막대모양 그래프.
-
-edges = [[2, 3], [4, 3], [1, 1], [2, 1]]
-print(solution(edges))
