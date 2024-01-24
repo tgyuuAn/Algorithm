@@ -10,6 +10,10 @@ def dfs(remain_count, idx, apeach_scores, ryan_scores):
 
         ryan_scores[-1] = remain_count
         score_gap = calculate_score(apeach_scores, ryan_scores)
+        
+        if score_gap == 0:
+            ryan_scores[-1] = 0
+            return
 
         if score_gap > max_score:
             dedications = [ryan_scores.copy()]
@@ -42,8 +46,8 @@ def solution(n, info):
     global dedications
     
     dfs(n,0,info, [0 for _ in range(len(info))])
-    
-    return [-1] if not dedications else dedications
+    dedications.sorted(key = lambda x : (x[-1],x[-2],x[-3],x[-4],x[-5],x[-6],x[-7],x[-8],x[-9],x[-10],x[-11],x[-12]), reverse= True)
+    return [-1] if not dedications else dedications[0]
 
 n = 9
 info = [0, 0, 1, 2, 0, 1, 1, 1, 1, 1, 1]
