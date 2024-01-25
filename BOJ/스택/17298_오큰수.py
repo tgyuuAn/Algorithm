@@ -16,4 +16,4 @@ for idx, i in enumerate(range(len(numbers))):
 
     temp.append([idx,now])
         
-print(answer)
+print(*answer)
