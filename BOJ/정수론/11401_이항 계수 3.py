@@ -8,8 +8,6 @@ for i in range(1,N+1):
     temp = (temp*i)%p
     factorial[i] = temp
 
-print(factorial)
-
 def pow(bottom,top):
     if top == 0: return 1
     elif top == 1: return bottom
