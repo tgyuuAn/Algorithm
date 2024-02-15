@@ -11,7 +11,7 @@ for _ in range(total_test_case):
     dp_table[0] = 1
 
     for coin in coins:
-        for column in range(1,target+1):
+        for column in range(coin,target+1):
             dp_table[column] = dp_table[column] + dp_table[column-coin]
     
     print(dp_table[-1])
