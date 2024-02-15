@@ -24,8 +24,7 @@ for today in map(int,input().split()):
     elif _max == now:
         max_duration += 1
 
-if _max == 0:
-    print("SAD")
+if _max == 0: print("SAD")
 else:
     print(_max)
     print(max_duration)
