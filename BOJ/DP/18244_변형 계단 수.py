@@ -59,7 +59,7 @@ for num in range(10):
     for count in range(4):
         answer += dp_table[-1][num][count]
 
-print(answer)
+print(answer%1_000_000_007)
 
 # [[1, 0, 0, 0], [1, 0, 0, 0], [1, 0, 0, 0], [1, 0, 0, 0], [1, 0, 0, 0], [1, 0, 0, 0], [1, 0, 0, 0], [1, 0, 0, 0], [1, 0, 0, 0], [1, 0, 0, 0]]
 
