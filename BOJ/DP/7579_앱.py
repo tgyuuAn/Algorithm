@@ -3,8 +3,6 @@ total_app_count, need_memory = map(int,input().split())
 use_memory = list(map(int,input().split()))
 re_use_cost = list(map(int,input().split()))
 
-print(use_memory, re_use_cost)
-
 dp_table = [0 for _ in range(sum(re_use_cost)+1)]
 cost_sum = sum(re_use_cost)
 
