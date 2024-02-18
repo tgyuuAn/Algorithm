@@ -7,14 +7,10 @@ def make_number_beautiful(answer, number, place_idx):
         number += 1
         for digit in str(number):
             answer[int(digit)] -= 10 ** place_idx
-
-    print(answer)
     return number
 
 for place_idx in range(len(str(number))):
     number = make_number_beautiful(answer, number, place_idx)
-
-    print(number, number//10)
     number //= 10
     
     for digit in range(10):
