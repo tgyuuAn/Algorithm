@@ -8,10 +8,10 @@ def divide_and_conquer(table, n):
     if table[n] != 0: return table[n]
     else:
         if n%2==0:
-            value = (divide_and_conquer(table,n//2) % M) * (2 * (divide_and_conquer(table,n//2-1) % M) + (divide_and_conquer(table,n//2) % M)) % M
+            value = ((divide_and_conquer(table,n//2) % M) * (2 * (divide_and_conquer(table,n//2-1) % M) + (divide_and_conquer(table,n//2) % M))) % M
         
         else:
-            value = ((divide_and_conquer(table,(n//2)+1) % M) ** 2 % M) + ((divide_and_conquer(table,n//2) % M) ** 2 % M) % M
+            value = (((divide_and_conquer(table,(n//2)+1) % M) ** 2 % M) + ((divide_and_conquer(table,n//2) % M) ** 2 % M)) % M
         table[n] = value
         return value
     
