@@ -2,7 +2,7 @@ N = int(input())
 A = list(map(int,input().split()))
 
 DP = [[1 for _ in range(2)] for _ in range(len(A))]
-answer = -1
+answer = 1
 
 for idx in range(1,len(A)):
 
