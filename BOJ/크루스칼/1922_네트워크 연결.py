@@ -1,6 +1,7 @@
 import sys
 
-V, E = map(int,sys.stdin.readline().split())
+V = int(sys.stdin.readline())
+E = int(sys.stdin.readline())
 
 def find_parent(element, graph):
     if element == graph[element]: return element

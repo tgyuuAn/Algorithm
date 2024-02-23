@@ -12,7 +12,7 @@ deq.append([subin,0])
 
 min_time = int(1e9)
 count = 0
-dp_table = [int(1e9) for _ in range(100_001)]
+dp_table = [int(1e9) for _ in range(200_001)]
 dp_table[subin] = 0
 
 while deq:
