@@ -1,5 +1,3 @@
-from collections import deque
-
 string = input()
 
 if string != string[::-1]:
