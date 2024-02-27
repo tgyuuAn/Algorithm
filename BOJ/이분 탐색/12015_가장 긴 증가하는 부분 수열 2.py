@@ -26,5 +26,5 @@ def check(element, mid):
 
 for number in numbers[1:]:
     add_sort(sequence, number)
-    print(sequence)
+    
 print(len(sequence))
