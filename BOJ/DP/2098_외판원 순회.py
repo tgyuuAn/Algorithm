@@ -4,30 +4,45 @@ N = int(sys.stdin.readline())
 graph = [list(map(int,sys.stdin.readline().split())) for _ in range(N)]
 
 # 현재 도시가 i이고 이떄까지 방문한 곳은 j
-DP = [[int(100) for _ in range(1<<N)] for _ in range(N)]
-
-# 초기화
-for i in range(N):
-    DP[i][0] = 0
+DP = [[-1 for _ in range(1<<N)] for _ in range(N)]
+ALL_VISITED = (1 << N)-1
 
 def dfs(now, visited):
-    for next in range(N):
-        # 똑같은 곳을 가려고 함 ex ) A-> A
-        if next == now: continue 
-        
-        # 이미 갔던 곳을 가려고 함 ex ) A -> B -> A
-        if now[next] == "1": continue
+    print(now, bin(visited)[2:])
+    
+    for x in DP:
+        print(x)
+    
+    if DP[now][visited] != -1: return DP[now][visited]
 
-        # 갈 수 없는 곳임
+    if visited == ALL_VISITED:
+        print("여기로 진입")
+        if graph[now][0] == 0: 
+            print("반환",int(1e9))
+            return int(1e9)
+        else:
+            print("반환", graph[now][0])
+            return graph[now][0]
+
+    for next in range(1,N):
+        if (visited & 1 << next) != 0: continue
+
         if graph[now][next] == 0: continue
 
-        DP[next][visited | 1 << next] = min(DP[next][visited | 1 << next], DP[now][visited] + graph[now][next])
+        next_visited = visited | 1 << next
 
-for i in range(N):
-    DP[i][-1] = 0
+        print(next, bin(next_visited)[2:])
+        
+        if DP[now][visited] == -1:
+            result = dfs(next, next_visited) + graph[now][next]
+            print(next,bin(next_visited)[2:],"를 넣고 ",result,"를 돌려받음")
+            DP[now][visited] = result
 
-answer = int(1e9)
-for x in range(N):
-    answer = min(answer, DP[x][(1<<N)-1])
+        else: DP[now][visited] = min(DP[now][visited], dfs(next, next_visited)+graph[now][next])
+        
+    if DP[now][visited] == -1:
+        DP[now][visited] = int(1e9)
 
-print(answer)
+    return DP[now][visited]
+
+print(dfs(0, 1))
