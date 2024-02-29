@@ -1,5 +1,4 @@
 import sys
-from collections import deque
 
 def input(): return sys.stdin.readline().rstrip()
 
@@ -12,8 +11,6 @@ board = [list(input()) for _ in range(R)]
 answer = 0
 
 def dfs(now_y, now_x):
-    global answer
-
     for dir in range(3):
         new_y = now_y + dy[dir]
         new_x = now_x + dx[dir]
