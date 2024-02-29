@@ -1,22 +1,20 @@
 import sys
-from collections import deque
 
 def input():
     return sys.stdin.readline()
 
 N = int(input())
 numbers = list(map(int,input().split()))
-sequence = deque([numbers[0]])
+sequence = [numbers[0]]
+temp = [1]
 
 def check(element, number):
     if element <= number: return True
     return False
 
 def add_numbers(element, sequence):
-    if element < sequence[0]:
-        sequence.appendleft(element)
-
-    elif element > sequence[-1]:
+    if element > sequence[-1]:
+        temp.append(len(sequence)+1)
         sequence.append(element)
 
     else:
@@ -33,10 +31,19 @@ def add_numbers(element, sequence):
 
             else: left = mid
 
+        temp.append(answer+1)
         sequence[answer] = element
 
 for idx in range(1,N):
     add_numbers(numbers[idx],sequence)
 
+now = len(sequence)
+for number, idx in zip(numbers[::-1],temp[::-1]):
+    if now == idx:
+        sequence[idx-1] = number
+        now -= 1
+        
+    if now == 0: break
+
 print(len(sequence))
-print(sequence)
+print(*sequence)
