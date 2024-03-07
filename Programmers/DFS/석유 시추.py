@@ -1,4 +1,7 @@
 from collections import defaultdict
+import sys
+
+sys.setrecursionlimit(1000000)
 
 temp = 0
 def dfs(y, x, visited, land, col_info):
@@ -41,12 +44,9 @@ def solution(land):
                 visited.add((row,col))
                 dfs(row, col, visited, land, col_info)
 
-                print(temp, col_info)
-
                 for c in col_info:
                     oil_info[c] += temp
-
-            print(oil_info)
+                    
     return max(list(oil_info.values()))
 
 land = [[0, 0, 0, 1, 1, 1, 0, 0], [0, 0, 0, 0, 1, 1, 0, 0], [1, 1, 0, 0, 0, 1, 1, 0], [1, 1, 1, 0, 0, 0, 0, 0], [1, 1, 1, 0, 0, 0, 1, 1]]
