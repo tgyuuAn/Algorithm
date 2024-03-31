@@ -56,7 +56,6 @@ def solution():
                 else:
                     visited[(rrx,rry,bbx,bby)] = 1
                     s.append([rrx,rry,bbx,bby,cnt+1])
-                    # print("방문처리 : ", rrx, rry, bbx, bby, cnt+1)
 
     return -1
 
