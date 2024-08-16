@@ -12,11 +12,12 @@ for step in range(len(bits)):
     
     B_d, B_m = divmod(B,total_count_bundle)
     B_count = one_count_per_bundle * B_d
-    if(B_m >= one_count_per_bundle): B_count += min(one_count_per_bundle,(B_m - one_count_per_bundle + 1))
+    if(B_m >= one_count_per_bundle): B_count += B_m - (one_count_per_bundle -1)
     
     A_d, A_m = divmod(A-1,total_count_bundle)
     A_count = one_count_per_bundle * A_d
-    if(A_m >= one_count_per_bundle): A_count += min(one_count_per_bundle, (A_m - one_count_per_bundle + 1))
+    if(A_m >= one_count_per_bundle): A_count += A_m - (one_count_per_bundle - 1)
+
     bits[step] += (B_count - A_count)
     
 print(sum(bits))
