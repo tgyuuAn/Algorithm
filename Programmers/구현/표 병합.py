@@ -98,9 +98,4 @@ def solution(commands):
             r, c = int(splt[1]), int(splt[2])
             answer.append(table[r][c] if table[r][c] is not None else "EMPTY")
 
-        print(value_dict)
-        for x in table[1:5]:
-            print(x[1:5])
-        print()
-
     return answer
