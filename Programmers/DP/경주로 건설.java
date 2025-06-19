@@ -38,10 +38,8 @@ class Node implements Comparable<Node> {
 }
 
 class Solution {
-    private int[][][] costBoard;
-
-    private int[] dx = { -1, 1, 0, 0 };
-    private int[] dy = { 0, 0, -1, 1 };
+    private static final int[] dx = { -1, 1, 0, 0 };
+    private static final int[] dy = { 0, 0, -1, 1 };
     private static final int STRAIGHT_COST = 100;
     private static final int CORNER_COST = 500;
     
@@ -51,8 +49,8 @@ class Solution {
     public int solution(int[][] board) {
         rowLength = board.length;
         colLength = board[0].length;
+        int[][][] costBoard = new int[rowLength][colLength][4];        
         
-        costBoard = new int[rowLength][colLength][4];        
         for (int[][] costRow : costBoard) {
             for (int[] costCol : costRow) {
                 Arrays.fill(costCol, Integer.MAX_VALUE);
